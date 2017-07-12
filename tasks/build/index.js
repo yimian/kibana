@@ -3,7 +3,8 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', 'Build packages', function () {
     grunt.task.run(flatten([
-      'clean:build',
+      grunt.option('skip-clean-build') ? [] : ['clean:build'],
+      //'clean:build',
       'clean:target',
       '_build:downloadNodeBuilds',
       '_build:extractNodeBuilds',
